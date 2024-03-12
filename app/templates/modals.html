@@ -1,0 +1,29 @@
+<div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="filterModalLabel">Настройка фильтров</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+              <form id="settingsForm">
+                
+                <label for="authorsDropdown" class="form-label">Автор</label>
+                <select class="form-select" id="authorsDropdown">
+                  <option value="">Все</option>
+                </select>
+
+                <label for="categoriesDropdown" class="form-label mt-3">Категория</label>
+                <select class="form-select" id="categoriesDropdown">
+                  <option value="">Все</option>
+                </select>
+
+              </form>
+          </div>
+
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-negative" data-bs-dismiss="modal">Закрыть</button>
+          </div>
+      </div>
+  </div>
+</div>

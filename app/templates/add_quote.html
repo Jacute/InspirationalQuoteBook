@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h2 class="text-center mb-4">Добавить цитату</h2>
+    <form id="addQuote" method="post">
+      <div class="mb-3">
+        <label for="quoteAuthor" class="form-label">Автор цитаты</label>
+        <input type="text" name="quoteAuthor" id="quoteAuthor" class="form-control" required>
+        <i>Примеры: Джон Леннон, Пушкин А.С.</i>
+      </div>
+      <div class="mb-3">
+        <label for="quote" class="form-label">Цитата</label>
+        <textarea type="text" name="quote" id="quote" class="form-control" required></textarea>
+        <i>Примеры: Дайте миру шанс. Блажен, кто смолоду был молод, блажен, кто вовремя созрел</i>
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Категории</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="category" placeholder="Введите категорию">
+          <button type="button" class="btn btn-add" onclick="addCategory()">&#10010;</button>
+        </div>
+        <div id="category_list">
+
+        </div>
+      </div>
+      <button type="submit" class="btn btn-positive">Добавить цитату</button>
+    </form>
+    <div id="result">
+      
+    </div>
+    <div class="errors-list">
+      <ul>
+        {% for error in errors %}
+          <li>
+            {{ error }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/addQuoteForm.js"></script>
+{% endblock scripts %}
