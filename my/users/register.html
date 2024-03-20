@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../static/css/main.css">
+
+</head>
+<body>
+    <div class="reg-container">
+        <div class="reg-block">
+            <h2 class="reg-title">
+                Зарегистрироваться
+            </h2>
+
+            
+            <ul class="input-ul">
+                <input required id="username" type="text" placeholder="Ваше имя">
+                <input required id="email" type="email" placeholder="Email">
+                <input required id="password" type="password" placeholder="Пароль">
+                <input required id="confirm_password" type="password" placeholder="Повторите пароль">
+            </ul>
+            
+            
+
+            <div class="errors-list">
+                <!-- <ul>
+                {% for error in errors %}
+                    <li>
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul> -->
+
+                <ul>
+                    <li><img src="../img/Vector 2.svg" alt="">Пароль должен содержать не менее 8 символов</li>
+                    <li><img src="../img/Vector 2.svg" alt="">Пароль должен содержать буквы в нижнем регистре</li>
+                    <li><img src="../img/Vector 2.svg" alt="">Пароль должен содержать буквы в верхнем регистре</li>
+                </ul>
+            </div>
+
+            
+            <button type="submit" class="reg">Зарегистрироваться</button>
+
+            <ul class="links">
+                <li><button class="log"><a href="{% url 'login' %}">Войти</a></button></li>
+                <li><button class="back"><a href="{% url 'index' %}">Вернуться на главную</a></button></li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>  

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add.quote</title>
+
+    <link rel="stylesheet" href="./static/css/main.css">
+</head>
+<body class="add_quote">
+    <header>
+        <div class="navigation">
+            <div class="nav">
+                <div class="nav-title">
+                    <a href="#!">Вдохновляющий цитатник</a>
+                </div>
+                
+
+                <div class="con-users" data-bs-popper="none">
+                    <button class="users" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="./img/Group 77.svg" alt="">
+                        <img class="arrow" src="./img/Arrow 5.svg" alt="">
+                    </button>
+                        <!-- <ul class="dropdown-menu" aria-labelledby="userMenuButton">
+                            <li class="dropdown-item"><a href="#">Профиль</a></li>
+                            <li class="dropdown-item"><a class="dropdown-item2" href="#">Настройки</a></li>
+                            <li class="dropdown-item"><a class="dropdown-item3" href="/logout">Выход</a></li>
+                        </ul> -->
+                        <div id="dropdown-menu" class="dropdown-menu">
+                            <ul class="dropdown-menu1" aria-labelledby="userMenuButton">
+                                <li class="dropdown-item"><a href="#">Профиль</a></li>
+                                <li class="dropdown-item"><a class="dropdown-item2" href="#">Настройки</a></li>
+                                <li class="dropdown-item-line"></li>
+                                <li class="dropdown-item"><a class="dropdown-item3" href="/logout">Выход</a></li>
+                            </ul>
+                        </div>
+                        
+                    
+                </div>
+                
+
+                
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container-add_quote">
+            <div class="add_quote-title">
+                <h2>Добавить цитату</h2>
+            </div>
+
+            <div class="add_quote-block">
+                <ul class="add_quote-input">
+                    <li><input type="text" placeholder="Цитата..."></li>
+                    <li><input type="text" placeholder="Автор/источник..."></li>
+                    <li><input type="text" placeholder="Категория..."></li>
+                </ul>
+                
+                <button class="add_quote-btn-kat">Категория</button>
+                
+                <div class="add_quote-btn">
+                    <button class="add_quote-btn-clear">Очистить</button>
+                    <button class="add_quote-btn-add">Добавить</button>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/utils.js"></script>
+    
+</body>
+</html>
