@@ -79,7 +79,6 @@ def validateQuote(author, quote, categories):
             errors.append(f'Категория "{categorie}" не соответствует правильному формату')
     
     return errors
-    
 
 
 def sendResetEmail(email, reset_link):

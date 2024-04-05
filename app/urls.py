@@ -4,7 +4,7 @@ from django.conf import settings
 from django.urls import reverse_lazy
 from .views import (index, api_get, api_put, login, register,
                     logout, add_quote, password_reset,
-                    password_reset_confirm, quotes)
+                    password_reset_confirm, my_quotes)
 from django.contrib.auth.views import (LogoutView,
                                        PasswordResetView,
                                        PasswordResetDoneView,
@@ -21,7 +21,7 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('logout/', logout, name='logout'),
     path('add_quote/', add_quote, name='add_quote'),
-    path('quotes/', quotes, name='quotes'),
+    path('my_quotes/', my_quotes, name='my_quotes'),
     path('password_reset/', password_reset, name='password_reset'),
     path('password_reset/done/', PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), name='password_reset_done'),
     path('password_reset_confirm/<token>/', password_reset_confirm, name='password_reset_confirm'),
