@@ -52,11 +52,13 @@
                 </div>
                 
                 
-                <div class="dropdown" data-bs-popper="none">
-                    <button class="users" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false" type="button">
+                <div class="dropdown" data-bs-popper="none" id="navbarNav">
+                    <button id="userMenuButton" class="users" data-bs-toggle="dropdown" aria-expanded="false" type="button">
                         <img src="./img/Group 77.svg" alt="">
                         <img class="arrow" src="./img/Arrow 5.svg" alt="">
                     </button>
+
+                    <a href="./users/login.html"><button id="login-btn">Авторизоваться</button></a> 
 
                         
                     <div class="dropdown-menu hidden">
@@ -79,8 +81,15 @@
                     
                 </div>
                 
-
-                
+                <!-- {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="./login">Войти</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./register">Зарегистрироваться</a>
+                </li>
+                {% endif %}
+                 -->
             </div>
         </div>
     </header>

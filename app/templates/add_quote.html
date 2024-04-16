@@ -17,11 +17,13 @@
                 </div>
                 
                 
-                <div class="dropdown" data-bs-popper="none">
-                    <button class="users" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false" type="button">
+                <div class="dropdown" data-bs-popper="none" id="navbarNav">
+                    <button id="userMenuButton" class="users" data-bs-toggle="dropdown" aria-expanded="false" type="button">
                         <img src="./img/Group 77.svg" alt="">
                         <img class="arrow" src="./img/Arrow 5.svg" alt="">
                     </button>
+
+                    <a href="./users/login.html"><button id="login-btn">Авторизоваться</button></a>
 
                         
                     <div class="dropdown-menu hidden">
@@ -56,27 +58,28 @@
                 <h2>Добавить цитату</h2>
             </div>
 
-            <div class="add_quote-block">
+            <div id="addQuote" method="post" class="add_quote-block">
                 <ul class="add_quote-input">
-                    <li><input class="inp" type="text" placeholder="Цитата..."></li>
-                    <li><input class="inp" type="text" placeholder="Автор/источник..."></li>
-                    <li><input id="content-input" class="inp-cat" type="text" placeholder="Категория..."><button id="add-content-button" class="btn-add">+</button></li>
+                    <li><input class="inp" type="text" name="quote" id="quote" placeholder="Цитата..." required></li>
+                    <li><input class="inp" type="text" name="quoteAuthor" id="quoteAuthor" placeholder="Автор/источник..." required></li>
+                    <li><input id="category" class="inp-cat" type="text" placeholder="Категория..."><button id="add-content-button" class="btn-add" onclick="addCategory()">+</button></li>
                 </ul>
                 
-                <div id="content-container"></div>
+                <div class="horizontal-block" id="category_list"></div>
                 
                 <div class="add_quote-btn">
                     <button class="add_quote-btn-clear">Очистить</button>
                     <button class="add_quote-btn-add">Добавить</button>
                 </div>
-                
+                <div id="result">
+                    
+                </div>
             </div>
         </div>
     </main>
-
-    <script src="../static/js/api.js"></script>
     <script src="../static/js/main.js"></script>
+    <script src="../static/js/api.js"></script>
     <script src="../static/js/addQuoteForm.js"></script>
-    
+    <script src="./static/js/categoryList.js"></script>
 </body>
 </html>

@@ -15,11 +15,13 @@
                 </div>
                 
                 
-                <div class="dropdown" data-bs-popper="none">
-                    <button class="users" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false" type="button">
+                <div class="dropdown" data-bs-popper="none" id="navbarNav">
+                    <button id="userMenuButton" class="users" data-bs-toggle="dropdown" aria-expanded="false" type="button">
                         <img src="./img/Group 77.svg" alt="">
                         <img class="arrow" src="./img/Arrow 5.svg" alt="">
                     </button>
+
+                    <a href="./users/login.html"><button id="login-btn">Авторизоваться</button></a>
 
                         
                     <div class="dropdown-menu hidden">
@@ -35,7 +37,7 @@
                             <a href="./add_quote.html"><li class="dropdown-item">Добавить цитату</li></a>
                             <a href="./dictionary.html"><li class="dropdown-item">К словарю</li></a>
                             <li class="dropdown-item-line"></li>
-                            <a href="/logout"><li class="dropdown-item">Выход</li></a>
+                            <a class="nav-link" href="/logout"><li class="dropdown-item">Выход</li></a>
                         </ul>
                     </div>
                         
@@ -54,23 +56,44 @@
 
             <div class="block-quote">
                 <div class="my_quote-dic">
-                    <div class="my_quote-dic2">
+                    <div id="quotes" class="my_quote-dic2">
                         <h2 class="my_quote-quote">Цитата...</h2>
                         <p class="my_quote-author">Автор/источник</p>
-                        <p class="my_quote-cat">Категория</p>
+                        <div class="horizontal-block">
+                            <span class="categor">
+                                Категория
+                            </span>
+                            <div class="categor">
+                                тегория
+                            </div>
+                            <div class="categor">
+                                Категоaaрия
+                            </div>
+                            <div class="categor">
+                                Категоaaaрия
+                            </div>
+                            <div class="categor">
+                                Категория
+                            </div>
+                            <div class="categor">
+                                Категорaaaaaaaaaaия
+                            </div>
+                            <div class="categor">
+                                Категория
+                            </div>
+                            <div class="categor">
+                                Категория
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="aaa">
                         <p class="status-complete">Опубликована</p>
-                        <button class="delete">Удалить</button>
+                        <button class="delete" id="delete-button-quote">Удалить</button>
                     </div>
                 </div>
                 <div class="line"></div>
             </div>
-
-            
-            
-            
         </div>
     </main>
 

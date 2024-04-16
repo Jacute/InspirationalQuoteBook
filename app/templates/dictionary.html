@@ -15,12 +15,13 @@
                 </div>
                 
                 
-                <div class="dropdown" d ata-bs-popper="none">
-                    <button class="users" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false" type="button">
+                <div class="dropdown" data-bs-popper="none" id="navbarNav">
+                    <button id="userMenuButton" class="users" data-bs-toggle="dropdown" aria-expanded="false" type="button">
                         <img src="./img/Group 77.svg" alt="">
                         <img class="arrow" src="./img/Arrow 5.svg" alt="">
                     </button>
 
+                    <a href="./users/login.html"><button id="login-btn">Авторизоваться</button></a>
                         
                     <div class="dropdown-menu hidden">
 
@@ -49,128 +50,83 @@
     </header>
 
     <main class="infinity">
+        
         <div class="container-dic">
-            <div class="in-dic">
-                <div class="in-con">
-                    <img class="in-img" src="./img/Group 25.svg" alt="">
-                    <input class="input-dic" type="text" placeholder="Введите цитату, автора, категорию...">
-                    <button class="search-btn">Найти</button>
-                </div>
-            </div>
-
-
-            <div class="filter">
-
-                
-                <select class="authors" name="" id="authors">
-                    <option hidden>Автор</option>
-                    <option >ффф</option>
-                    <option >чтоооооооооооооооо</option>
-                    <option >гг</option>
-                    <option >бб</option>
-
-                </select>
-
-                
-
-                <select class="categories" name="" id="categories">
-                    <option hidden>Категория</option>
-                    <option hidden>Автор</option>
-                    <option >ффф</option>
-                    <option >чтоооооооооооооооо</option>
-                    <option >гг</option>
-                    <option >бб</option>
-                </select>
-                
-            </div>
-
-            <div class="block-quote">
-                <div class="quote-dic">
-                    <div class="quote-cat">
-                        <h2 class="quote">Цитата...</h2>
-                        <p class="author">Автор/источник</p>
-                    </div>
-                    <p class="cat">Категория</p>
-                </div>
-                <div class="line none"></div>
-            </div>
-
-            <div class="block-quote">
-                <div class="quote-dic">
-                    <div class="quote-cat">
-                        <h2 class="quote">Цитата...</h2>
-                        <p class="author">Автор/источник</p>
-                    </div>
-                    <p class="cat">Категория</p>
-                </div>
-                <div class="line none"></div>
-            </div>
-
-            <div class="block-quote">
-                <div class="quote-dic">
-                    <div class="quote-cat">
-                        <h2 class="quote">Цитата...</h2>
-                        <p class="author">Автор/источник</p>
-                    </div>
-                    <p class="cat">Категория</p>
-                </div>
-                <div class="line none"></div>
-            </div>
-
-            <div class="block-quote">
-                <div class="quote-dic">
-                    <div class="quote-cat">
-                        <h2 class="quote">Цитата...</h2>
-                        <p class="author">Автор/источник</p>
-                    </div>
-                    <p class="cat">Категория</p>
-                </div>
-                <div class="line none"></div>
-            </div>
-
-            <div class="block-quote">
-                <div class="quote-dic">
-                    <div class="quote-cat">
-                        <h2 class="quote">Цитата...</h2>
-                        <p class="author">Автор/источник</p>
-                    </div>
-                    <p class="cat">Категория</p>
-                </div>
-                <div class="line none"></div>
-            </div>
             
-            <div class="block-quote">
-                <div class="quote-dic">
-                    <div class="quote-cat">
-                        <h2 class="quote">Цитата...</h2>
-                        <p class="author">Автор/источник</p>
+            <div id="searchForm">
+                <div class="in-dic">
+                    <div class="in-con">
+                        <img class="in-img" src="./img/Group 25.svg" alt="">
+                        <input id="query" type="text" class="form-control" placeholder="Введите цитату, автора, категорию...">
+                        <button id="search" type="button" form="searchForm" class="btn btn-positive">Найти</button>
                     </div>
-                    <p class="cat">Категория</p>
                 </div>
-                <div class="line none"></div>
-            </div>
-
-            <div class="block-quote">
-                <div class="quote-dic">
-                    <div class="quote-cat">
-                        <h2 class="quote">Цитата...</h2>
-                        <p class="author">Автор/источник</p>
+    
+    
+                <div class="modal fade" id="filterModal" aria-labelledby="filterModalLabel" aria-hidden="true">
+    
+    
+    
+                    <div class="modal-body">
+                        <form class="modal-form" id="settingsForm">
+                            <div class="authors">
+                                <label for="authorsDropdown" class="form-label">Автор</label>
+                                <select class="form-select" id="authorsDropdown">
+                                    <option value="">Все</option>
+                                </select>
+                            </div>
+                            
+                            <div class="categories">
+                                <label for="categoriesDropdown" class="form-label mt-3">Категория</label>
+                                <select class="form-select" id="categoriesDropdown">
+                                    <option value="">Все</option>
+                                </select>
+                            </div>
+                            
+          
+                        </form>
                     </div>
-                    <p class="cat">Категория</p>
-                </div>
-                <div class="line none"></div>
             </div>
-
-            <div class="block-quote">
-                <div class="quote-dic">
-                    <div class="quote-cat">
-                        <h2 class="quote">Цитата...</h2>
-                        <p class="author">Автор/источник</p>
+                
+            
+            
+            <div class="quotes">
+                <div class="block-quote">
+                    <div class="quote-dic">
+                        <div class="quote-cat">
+                            <h2 class="quote">Цитата...</h2>
+                            <p class="author">Автор/источник</p>
+                        </div>
+                        <div class="horizontal-block1">
+                            <span class="categor">
+                                Категория
+                            </span>
+                            <div class="categor">
+                                тегория
+                            </div>
+                            <div class="categor">
+                                Категоaaрия
+                            </div>
+                            <div class="categor">
+                                Категоaaaрия
+                            </div>
+                            <div class="categor">
+                                Категория
+                            </div>
+                            <div class="categor">
+                                Категорaaaaaaaaaaия
+                            </div>
+                            <div class="categor">
+                                Категория
+                            </div>
+                            <div class="categor">
+                                Категория
+                            </div>
+                        </div>
                     </div>
-                    <p class="cat">Категория</p>
+                    <div class="line none"></div>
                 </div>
-                <div class="line none"></div>
-            </div>
+            </div>           
         </div>
     </main>
 
@@ -179,5 +135,9 @@
     <script src="../static/js/loadFilters.js"></script>
     <script src="../static/js/loadDictionary.js"></script>
     <script src="../static/js/eventListeners.js"></script>
+
+    <script>
+        searchHandler();
+    </script>
 </body>
 </html>
