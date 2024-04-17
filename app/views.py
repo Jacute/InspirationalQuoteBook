@@ -221,7 +221,7 @@ def api_put(request: HttpRequest, table: str) -> JsonResponse:
                     record = {
                         'quote': quote,
                         'quoteAuthor': author,
-                        'suggesterAuthor': request.user.username,
+                        'suggesterAuthor': request.user,
                         'categories': categories
                     }
                     addQuote(record, True)

@@ -14,8 +14,8 @@ from django.db.models import Q
 
 from django.middleware.csrf import get_token
 
-"""from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity"""
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 from .models import Quote
 from .db import addQuote
@@ -69,7 +69,7 @@ def validateEmail(email):
 def validateQuote(author, quote, categories):
     errors = []
     
-    if not re.match(r'^[А-Яа-яЁё\. ]{8,}$', author):
+    if not re.match(r'^[А-Яа-яЁё ]{8,}$', author):
         errors.append('Автор не соответствует правильному формату')
     if not re.match(r'^[А-Яа-яЁё\,\.\-\!\? ]{8,}$', quote):
         errors.append('Цитата не соответствует правильному формату')
@@ -95,15 +95,13 @@ def printResetEmail(reset_link):
 
 
 def compareStrings(text1, text2):
-    """vectorizer = TfidfVectorizer()
+    vectorizer = TfidfVectorizer()
     vectors = vectorizer.fit_transform([text1, text2])
 
     similarity = cosine_similarity(vectors)
     
-    return similarity[0][1] * 100"""
+    return similarity[0][1] * 100
     
-    return 75
-
 
 def repeatModeration(quote):
     quotes = Quote.objects.filter(Q(status=1) | Q(status=2)).values_list('quote', flat=True)
@@ -125,8 +123,7 @@ def banwordModeration(author, quote, categories):
 def moderateQuote(author, quote, categories):
     if repeatModeration(quote) and banwordModeration(author, quote, categories):
         return True
-    else:
-        return False
+    return False
 
 try:
     with open('banwords.txt', 'r') as f:

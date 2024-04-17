@@ -1,4 +1,4 @@
 Django==4.2.7
 python-dotenv==1.0.0
 mysqlclient==2.2.1
-# scikit-learn==1.4.0
+scikit-learn==1.4.0

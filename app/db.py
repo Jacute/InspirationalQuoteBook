@@ -5,9 +5,9 @@ from ast import literal_eval
 
 def addQuote(quote: dict, isCustom=False):
     if isCustom:
-        quoteItem = Quote(quote=quote['quote'], quote_author=quote['quoteAuthor'], suggester_author=quote['suggesterAuthor'], status=1) # quote adding
+        quoteItem = Quote(quote=quote['quote'], quote_author=quote['quoteAuthor'], suggester_author=quote['suggesterAuthor'], status=2)
     else:
-        quoteItem = Quote(quote=quote['quote'], quote_author=quote['quoteAuthor'], status=2)
+        quoteItem = Quote(quote=quote['quote'], quote_author=quote['quoteAuthor'], status=1) # quote adding
     quoteItem.save()
     
     for category in quote['categories']:
