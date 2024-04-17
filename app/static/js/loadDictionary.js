@@ -5,31 +5,49 @@ async function getCategorieBlock(quotes) {
 
     quotes.forEach(quote => {
         const quoteCard = document.createElement('div');
-        quoteCard.classList.add('block', 'border-bottom');
-        quoteCard.classList.add('card', 'mb-3');
+        quoteCard.classList.add('block-quote');
 
-        const quoteCardBody = document.createElement('div');
-        quoteCardBody.classList.add('card-body');
+        const quoteDic = document.createElement('div');
+        quoteDic.classList.add('quote-dic');
 
-        const quoteText = document.createElement('p');
-        quoteText.classList.add('card-text', 'quote-text');
-        quoteText.innerText = quote.quote;
+        const quoteCat = document.createElement('div');
+        quoteCat.classList.add('quote-cat');
 
-        const quoteAuthor = document.createElement('p');
-        quoteAuthor.classList.add('card-text');
-        quoteAuthor.innerHTML = `<strong>Автор:</strong> ${quote.quote_author}`;
+        const quoteElement = document.createElement('h2');
+        quoteElement.classList.add('quote');
+        quoteElement.textContent = quote.quote;
+
+
+        const author = document.createElement('p');
+        author.classList.add('author');
+        author.textContent = quote.quote_author;
+
+        quoteCat.appendChild(quoteElement);
+        quoteCat.appendChild(author);
+
+        const categorieBlock = document.createElement('div');
+        categorieBlock.classList.add('horizontal-block1');
         
         let categories = quote.categories.map(elem => upperFirstLetter(elem));
-        const quoteCategory = document.createElement('p');
-        quoteCategory.classList.add('card-text');
-        quoteCategory.innerHTML = `<strong>Категории:</strong> ${categories.join(", ")}`;
+        categories.forEach(categorie => {
+            const span = document.createElement('span');
+            span.classList.add('categor');
+            span.textContent = categorie;
+            categorieBlock.appendChild(span);
+        });
 
-        quoteCardBody.appendChild(quoteText);
-        quoteCardBody.appendChild(quoteAuthor);
-        quoteCardBody.appendChild(quoteCategory);
+        // const quoteDelimiter = document.createElement('div');
+        // quoteDelimiter.classList.add('line');
 
-        quoteCard.appendChild(quoteCardBody);
+        quoteDic.appendChild(quoteCat);
+        quoteDic.appendChild(categorieBlock);
+        // quoteCardBody.appendChild(quoteDelimiter);
+
+        quoteCard.appendChild(quoteDic);
+
         quotesList.appendChild(quoteCard);
+
+        
     });
 
 }

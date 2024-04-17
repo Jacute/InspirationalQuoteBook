@@ -1,6 +1,7 @@
-from .models import CustomUser, Quote, Category, QuoteCategory
+from .models import Quote, Category, QuoteCategory, CustomUser
 from django.db import connection
 from ast import literal_eval
+
 
 
 def addQuote(quote: dict, isCustom=False):

@@ -19,6 +19,8 @@ import json
 def index(request: HttpRequest) -> HttpResponse:
     return render(request, 'index.html')
 
+def dictionary(request: HttpRequest) -> HttpResponse:
+    return render(request, 'dictionary.html')
 
 @login_required
 def my_quotes(request: HttpRequest) -> HttpResponse:

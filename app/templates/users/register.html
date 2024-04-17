@@ -1,38 +1,70 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../static/css/main.css">
 
-{% block content %}
-<div class="row justify-content-center">
-  <div class="col-md-6">
-    <h2 class="text-center mb-4">Регистрация</h2>
-    <form method="post">
-      {% csrf_token %}
-      <div class="mb-3">
-        <label for="username" class="form-label">Имя пользователя</label>
-        <input type="text" class="form-control" id="username" name="username" value="{% if username %}{{ username }}{% endif %}" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Электронная почта</label>
-        <input type="email" class="form-control" id="email" name="email" value="{% if email %}{{ email }}{% endif %}" required>
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Пароль</label>
-        <input type="password" class="form-control" id="password" name="password" required>
-      </div>
-      <div class="mb-3">
-        <label for="confirm_password" class="form-label">Повторите пароль</label>
-        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-      </div>
-      <button type="submit" class="btn btn-positive">Зарегистрироваться</button>
-    </form>
-    <div class="errors-list">
-      <ul>
-        {% for error in errors %}
-          <li>
-            {{ error }}
-          </li>
-        {% endfor %}
-      </ul>
+</head>
+<body>
+    <div class="reg-container">
+        <div class="reg-block">
+            <h2 class="reg-title">
+                Зарегистрироваться
+            </h2>
+
+            
+            
+
+            <div class="errors-list">
+                <!-- <ul>
+                {% for error in errors %}
+                    <li>
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul> -->
+
+                <ul>
+                    {% for error in errors %}
+                        <li><img src="/static/img/Vector 2.svg" alt="">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            
+            
+            <form method="post">
+                {% csrf_token %}
+                <ul class="input-ul">
+                    <input id="username" name="username" type="text" placeholder="Ваше имя" required>
+                    <input id="email" name="email" type="email" placeholder="Email" required>
+                    <input id="password" name="password" type="password" placeholder="Пароль" required>
+                    <input id="confirm_password" name="confirm_password" type="password" placeholder="Повторите пароль" required>
+                </ul>
+                <div class="log-errors-list">
+                    <ul>
+                        {% for error in errors %}
+                            <li><img src="/static/img/Vector 2.svg" alt="">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button type="submit" class="reg">Зарегистрироваться</button>
+            </form>
+            <ul class="log-a">
+                <li><a href="/password_reset">Забыли пароль?</a></li>
+                <li><a href="/register">Зарегистрироваться</a></li>
+                <li><a href="/">Вернуться на главную</a></li>
+            </ul>
+        </div>
+
+            <ul class="links">
+                <li><button class="log"><a href="/login">Войти</a></button></li>
+                <li><button class="back"><a href="/">Вернуться на главную</a></button></li>
+            </ul>
+        </div>
     </div>
-  </div>
-</div>
-{% endblock %}
+    
+</body>
+</html>  

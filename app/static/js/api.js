@@ -64,3 +64,28 @@ async function addQuote(quote, author, categories) {
         console.error(error);
     }
 }
+
+// удаление цитаты
+
+// const deleteButton = document.querySelector("button[data-block-id='quote']");
+
+// deleteButton.addEventListener("click", async () => {
+//   const response = await fetch("/api/delete-block", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ blockId: "quote" }),
+//   });
+
+//   const data = await response.json();
+
+//   if (data.success) {
+//     // Удалить блок из DOM
+//     const block = document.getElementById("quote");
+//     block.parentNode.removeChild(block);
+//   } else {
+//     // Отобразить сообщение об ошибке
+//     alert("Не удалось удалить блок. Повторите попытку.");
+//   }
+// });

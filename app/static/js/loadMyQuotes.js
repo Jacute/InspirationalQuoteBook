@@ -1,54 +1,77 @@
 async function getCategorieBlock(quotes) {
-    const quotesList = document.getElementById('quotes');
+    const myQuoteContainer = document.getElementById('myQuoteContainer');
     
-    quotesList.innerHTML = '';
-
     quotes.forEach(quote => {
         const quoteCard = document.createElement('div');
-        quoteCard.classList.add('block', 'border-bottom');
-        quoteCard.classList.add('card', 'mb-3');
+        quoteCard.classList.add('block-quote');
 
-        const quoteCardBody = document.createElement('div');
-        quoteCardBody.classList.add('card-body');
+        const quoteDic = document.createElement('div');
+        quoteDic.classList.add('my_quote-dic');
 
-        const quoteText = document.createElement('p');
-        quoteText.classList.add('card-text', 'quote-text');
-        quoteText.innerText = quote.quote;
+        const quoteDic2 = document.createElement('div');
+        quoteDic2.classList.add('my_quote-dic2');
+        quoteDic2.id = 'quotes';
 
-        const quoteAuthor = document.createElement('p');
-        quoteAuthor.classList.add('card-text');
-        quoteAuthor.innerHTML = `<strong>Автор:</strong> ${quote.quote_author}`;
+        const quoteElement = document.createElement('h2');
+        quoteElement.classList.add('my_quote-quote');
+        quoteElement.textContent = quote.quote;
+
+
+        const author = document.createElement('p');
+        author.classList.add('my_quote-author');
+        author.textContent = quote.quote_author;
+
+        quoteDic2.appendChild(quoteElement);
+        quoteDic2.appendChild(author);
+
+        const categorieBlock = document.createElement('div');
+        categorieBlock.classList.add('horizontal-block1');
         
         let categories = quote.categories.map(elem => upperFirstLetter(elem));
-        const quoteCategory = document.createElement('p');
-        quoteCategory.classList.add('card-text');
-        quoteCategory.innerHTML = `<strong>Категории:</strong> ${categories.join(", ")}`;
+        categories.forEach(categorie => {
+            const span = document.createElement('span');
+            span.classList.add('categor');
+            span.textContent = categorie;
+            categorieBlock.appendChild(span);
+        });
+
+        quoteDic2.appendChild(categorieBlock);
+
+        const statusContainer = document.createElement('div');
+        statusContainer.classList.add('aaa');
 
         const status = document.createElement('p');
-        status.classList.add('card-text');
         if (quote.status == '1') {
-            status.innerHTML = `<strong>Статус:</strong> <div style="color: green">Опубликована</div>`;
+            status.classList.add('status-complete');
+            status.textContent = 'Опубликована';
         } else if (quote.status == '2') {
-            status.innerHTML = `<strong>Статус:</strong> <div style="color: yellow">На модерации</div>`;
+            status.classList.add('status-under-consideration')
+            status.textContent = 'На модерации';
         } else {
-            status.innerHTML = `<strong>Статус:</strong> <div style="color: red">Отклонена</div>`;
+            status.classList.add('status-ban');
+            status.textContent = 'Отклонена';
         }
+        statusContainer.appendChild(status);
 
-        quoteCardBody.appendChild(quoteText);
-        quoteCardBody.appendChild(quoteAuthor);
-        quoteCardBody.appendChild(quoteCategory);
-        quoteCardBody.appendChild(status);
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete');
+        deleteButton.id = 'delete-button-quote';
+        deleteButton.textContent = 'Удалить';
+        statusContainer.appendChild(deleteButton);
 
+        quoteDic.appendChild(quoteDic2);
+        quoteDic.appendChild(statusContainer);
+        quoteCard.appendChild(quoteDic);
+        myQuoteContainer.appendChild(quoteCard);
 
-        quoteCard.appendChild(quoteCardBody);
-        quotesList.appendChild(quoteCard);
+        
     });
 
 }
 
 async function myQuotes() {
     const response = await getMyQuotes();
-
+    console.log(response);
     getCategorieBlock(response.data);
 }
 
