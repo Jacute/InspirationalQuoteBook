@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вдохновляющий цитатник</title>
+
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body class="body-base">
+    <!-- <header>
+        <div class="navigation">
+            <div class="nav">
+                <div class="nav-title">
+                    <a href="#!">Вдохновляющий цитатник</a>
+                </div>
+                
+
+                <div class="con-users" data-bs-popper="none">
+                    <button class="users" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="./img/Group 77.svg" alt="">
+                        <img class="arrow" src="./img/Arrow 5.svg" alt="">
+                    </button>
+                        <ul class="dropdown-menu" aria-labelledby="userMenuButton">
+                            <li class="dropdown-item"><a href="#">Профиль</a></li>
+                            <li class="dropdown-item"><a class="dropdown-item2" href="#">Настройки</a></li>
+                            <li class="dropdown-item"><a class="dropdown-item3" href="/logout">Выход</a></li>
+                        </ul>
+                        <div id="dropdown-menu" class="dropdown-menu">
+                            <ul class="dropdown-menu1" aria-labelledby="userMenuButton">
+                                <li class="dropdown-item"><a href="#">Профиль</a></li>
+                                <li class="dropdown-item"><a class="dropdown-item2" href="#">Настройки</a></li>
+                                <li class="dropdown-item-line"></li>
+                                <li class="dropdown-item"><a class="dropdown-item3" href="/logout">Выход</a></li>
+                            </ul>
+                        </div>
+                        
+                    
+                </div>
+                
+
+                
+            </div>
+        </div>
+    </header> -->
+
+    <header>
+        <div class="navigation">
+            <div class="nav">
+                <div class="nav-title">
+                    <a href="/">Вдохновляющий цитатник</a>
+                </div>
+                
+                
+                <div class="dropdown" data-bs-popper="none" id="navbarNav">
+                    {% if user.is_authenticated %}
+                    <button id="userMenuButton" class="users" data-bs-toggle="dropdown" aria-expanded="false" type="button">
+                        <img src="/static/img/Group 77.svg" alt="">
+                        <img class="arrow" src="/static/img/Arrow 5.svg" alt="">
+                    </button>
+                    <div class="dropdown-menu hidden">
+                    <ul class="dropdown-menu1" aria-labelledby="userMenuButton">
+                        <a href="/add_quote"><li class="dropdown-item">Добавить цитату</li></a>
+                        <a class="dropdown-item2" href="/my_quotes"><li class="dropdown-item">Предложенные цитаты</li></a>
+                        <li class="dropdown-item-line"></li>
+                        <a class="dropdown-item3" href="/logout"><li class="dropdown-item">Выход</li></a>
+                    </ul>
+                    </div>
+                    {% else %}
+                    <a href="/login"><button id="login-btn">Авторизоваться</button></a> 
+
+                    
+
+                        <!-- <ul class="dropdown-menu" aria-labelledby="userMenuButton">
+                            <li class="dropdown-item"><a href="#">Профиль</a></li>
+                            <li class="dropdown-item"><a class="dropdown-item2" href="#">Настройки</a></li>
+                            <li class="dropdown-item"><a class="dropdown-item3" href="/logout">Выход</a></li>
+                        </ul> -->
+
+                    {% endif %}
+                    
+                        
+                    
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="con-base">
+            <h1 class="title-base">Вдохновляющий цитатник</h1>
+
+            <div class="text-base">
+
+            </div>
+
+            <a href="/dictionary"><button class="btn-base">К словарю</button></a>
+
+            <img class="Mark" src="/static/img/МаркТвенОригинал.png" alt="">
+            <p class="text-Mark">Правильная дозировка афоризмов: минимум слов, максимум смысла</p>
+            <p class="text-neMark">«Знаете, что беспокоит меня?<br> Мир без объятий»</p>
+            <img class="neMark" src="/static/img/РайанГослинг.png" alt="">
+            
+        </div>
+        
+
+    </main>
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/utils.js"></script>
+</body>
+</html>

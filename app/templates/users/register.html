@@ -15,13 +15,6 @@
             </h2>
 
             
-            <ul class="input-ul">
-                <input required id="username" type="text" placeholder="Ваше имя" required>
-                <input required id="email" type="email" placeholder="Email" required>
-                <input required id="password" type="password" placeholder="Пароль" required>
-                <input required id="confirm_password" type="password" placeholder="Повторите пароль" required>
-            </ul>
-            
             
 
             <div class="errors-list">
@@ -34,18 +27,41 @@
                 </ul> -->
 
                 <ul>
-                    <li><img src="../img/Vector 2.svg" alt="">Пароль должен содержать не менее 8 символов</li>
-                    <li><img src="../img/Vector 2.svg" alt="">Пароль должен содержать буквы в нижнем регистре</li>
-                    <li><img src="../img/Vector 2.svg" alt="">Пароль должен содержать буквы в верхнем регистре</li>
+                    {% for error in errors %}
+                        <li><img src="/static/img/Vector 2.svg" alt="">{{ error }}</li>
+                    {% endfor %}
                 </ul>
             </div>
 
             
-            <button type="submit" class="reg">Зарегистрироваться</button>
+            
+            <form method="post">
+                {% csrf_token %}
+                <ul class="input-ul">
+                    <input id="username" name="username" type="text" placeholder="Ваше имя" required>
+                    <input id="email" name="email" type="email" placeholder="Email" required>
+                    <input id="password" name="password" type="password" placeholder="Пароль" required>
+                    <input id="confirm_password" name="confirm_password" type="password" placeholder="Повторите пароль" required>
+                </ul>
+                <div class="log-errors-list">
+                    <ul>
+                        {% for error in errors %}
+                            <li><img src="/static/img/Vector 2.svg" alt="">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button type="submit" class="reg">Зарегистрироваться</button>
+            </form>
+            <ul class="log-a">
+                <li><a href="/password_reset">Забыли пароль?</a></li>
+                <li><a href="/register">Зарегистрироваться</a></li>
+                <li><a href="/">Вернуться на главную</a></li>
+            </ul>
+        </div>
 
             <ul class="links">
-                <li><button class="log"><a href="./login.html">Войти</a></button></li>
-                <li><button class="back"><a href="../base.html">Вернуться на главную</a></button></li>
+                <li><button class="log"><a href="/login">Войти</a></button></li>
+                <li><button class="back"><a href="/">Вернуться на главную</a></button></li>
             </ul>
         </div>
     </div>

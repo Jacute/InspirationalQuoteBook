@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LogIn</title>
-    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
     <div class="log-container">
@@ -13,11 +13,7 @@
                 Войти
             </div>
 
-            <ul class="log-input-ul">
-                <input placeholder="Имя пользователя" type="text" name="username" id="id_username" required>
-                <input id="id_password" type="password" placeholder="Пароль" required>
-            </ul>
-
+            
             <!--<div class="errors-list">
                 <ul>
                 {% for error in errors %}
@@ -29,15 +25,25 @@
                 
             </div>-->
 
-            <div class="log-errors-list">
-                <img src="../img/Vector 2.svg" alt="">Пароль должен содержать не менее 8 символов
-            </div>
-                
-            <button type="submit" class="log-btn">Войти</button>
+            <form method="post">
+                {% csrf_token %}
+                <ul class="log-input-ul">
+                    <input placeholder="Имя пользователя" type="text" name="username" id="id_username" required>
+                    <input id="id_password" type="password" name="password" placeholder="Пароль" required>
+                </ul>
+                <div class="log-errors-list">
+                    <ul>
+                        {% for error in errors %}
+                            <li><img src="/static/img/Vector 2.svg" alt="">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button type="submit" class="log-btn">Войти</button>
+            </form>
             <ul class="log-a">
-                <li><a href="./password_reset_form.html">Забыли пароль?</a></li>
-                <li><a href="./register.html">Зарегистрироваться</a></li>
-                <li><a href="../base.html">Вернуться на главную</a></li>
+                <li><a href="/password_reset">Забыли пароль?</a></li>
+                <li><a href="/register">Зарегистрироваться</a></li>
+                <li><a href="/">Вернуться на главную</a></li>
             </ul>
         </div>
     </div>

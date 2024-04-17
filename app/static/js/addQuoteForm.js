@@ -23,8 +23,6 @@ async function updateCategoryList() {
 
     categories.forEach((category, index) => {
         const listItem = document.createElement('div');
-        listItem.className = 'alert alert-custom alert-dismissible fade show mt-3';
-        listItem.role = 'alert';
 
         const textItem = document.createTextNode(category);
         const closeButton = document.createElement('button');
@@ -46,7 +44,7 @@ const form = document.getElementById("addQuote");
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const errorsList = document.getElementsByClassName("errors-list")[0].querySelector('ul');
+    const errorsList = document.getElementById("errors").querySelector('ul');
     const result = document.getElementById("result");
     const quote = document.getElementById("quote");
     const author = document.getElementById("quoteAuthor");
@@ -58,10 +56,9 @@ form.addEventListener("submit", async (event) => {
     
 
     const queryResult = await addQuote(quote.value, author.value, categories);
-    console.log(queryResult);
+
     if (queryResult['status'] === "OK") {
         const element = document.createElement('li');
-        const result = document.getElementById("result");
 
         element.textContent = 'Ваша цитата успешно отправлена на модерацию';
         
@@ -72,7 +69,6 @@ form.addEventListener("submit", async (event) => {
     } else if (queryResult['status'] === 'BAD') {
         queryResult['errors'].forEach(error => {
             const element = document.createElement('li');
-            const errorsList = document.getElementsByClassName("errors-list")[0].querySelector('ul');
 
             element.textContent = error;
 

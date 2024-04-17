@@ -19,10 +19,12 @@ import json
 def index(request: HttpRequest) -> HttpResponse:
     return render(request, 'index.html')
 
+def dictionary(request: HttpRequest) -> HttpResponse:
+    return render(request, 'dictionary.html')
 
 @login_required
-def quotes(request: HttpRequest) -> HttpResponse:
-    return render(request, 'quotes.html')
+def my_quotes(request: HttpRequest) -> HttpResponse:
+    return render(request, 'my_quotes.html')
 
 
 @login_required
@@ -184,6 +186,9 @@ def api_get(request: HttpRequest, table: str, quote_type: str) -> JsonResponse:
             elif quote_type == 'query':
                 data['status'] = 'OK'
                 data['data'] = getQuotes(author, category, query)
+            elif quote_type == 'my':
+                suggesterAuthor = request.user.username
+                data['data'] = getQuotes(suggesterAuthor=suggesterAuthor, isPub=False)
             else:
                 data['status'] = 'BAD'
     else:
@@ -213,7 +218,19 @@ def api_put(request: HttpRequest, table: str) -> JsonResponse:
             if errors:
                 return JsonResponse({'status': 'BAD', 'errors': errors}, safe=False)
             
-            if moderateQuote(author.lower(), quote.lower(), categories):
+            if not settings.DEBUG and moderateQuote(author.lower(), quote.lower(), categories):
+                try:
+                    record = {
+                        'quote': quote,
+                        'quoteAuthor': author,
+                        'suggesterAuthor': request.user,
+                        'categories': categories
+                    }
+                    addQuote(record, True)
+                except Exception as e:
+                    print("Error:", e)
+                return JsonResponse({'status': 'OK'}, safe=False)
+            elif settings.DEBUG:
                 try:
                     record = {
                         'quote': quote,

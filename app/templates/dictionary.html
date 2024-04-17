@@ -4,26 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dictionary</title>
-    <link rel="stylesheet" href="./static/css/main.css">
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
     <header>
         <div class="navigation">
             <div class="nav">
                 <div class="nav-title">
-                    <a href="./base.html">Вдохновляющий цитатник</a>
+                    <a href="/">Вдохновляющий цитатник</a>
                 </div>
                 
                 
                 <div class="dropdown" data-bs-popper="none" id="navbarNav">
+                    {% if user.is_authenticated %}
                     <button id="userMenuButton" class="users" data-bs-toggle="dropdown" aria-expanded="false" type="button">
-                        <img src="./img/Group 77.svg" alt="">
-                        <img class="arrow" src="./img/Arrow 5.svg" alt="">
+                        <img src="/static/img/Group 77.svg" alt="">
+                        <img class="arrow" src="/static/img/Arrow 5.svg" alt="">
                     </button>
-
-                    <a href="./users/login.html"><button id="login-btn">Авторизоваться</button></a>
-                        
                     <div class="dropdown-menu hidden">
+                    <ul class="dropdown-menu1" aria-labelledby="userMenuButton">
+                        <a href="/add_quote"><li class="dropdown-item">Добавить цитату</li></a>
+                        <a class="dropdown-item2" href="/my_quotes"><li class="dropdown-item">Предложенные цитаты</li></a>
+                        <li class="dropdown-item-line"></li>
+                        <a class="dropdown-item3" href="/logout"><li class="dropdown-item">Выход</li></a>
+                    </ul>
+                    </div>
+                    {% else %}
+                    <a href="/login"><button id="login-btn">Авторизоваться</button></a> 
+
+                    
 
                         <!-- <ul class="dropdown-menu" aria-labelledby="userMenuButton">
                             <li class="dropdown-item"><a href="#">Профиль</a></li>
@@ -31,19 +40,11 @@
                             <li class="dropdown-item"><a class="dropdown-item3" href="/logout">Выход</a></li>
                         </ul> -->
 
-
-                        <ul class="dropdown-menu1" aria-labelledby="userMenuButton">
-                            <a href="./add_quote.html"><li class="dropdown-item">Добавить цитату</li></a>
-                            <a class="dropdown-item2" href="./my_quotes.html"><li class="dropdown-item">Предложенные цитаты</li></a>
-                            <li class="dropdown-item-line"></li>
-                            <a class="dropdown-item3" href="./users/login.html"><li class="dropdown-item">Выход</li></a>
-                        </ul>
-                    </div>
+                    {% endif %}
+                    
                         
                     
                 </div>
-                
-
                 
             </div>
         </div>
@@ -56,7 +57,7 @@
             <div id="searchForm">
                 <div class="in-dic">
                     <div class="in-con">
-                        <img class="in-img" src="./img/Group 25.svg" alt="">
+                        <img class="in-img" src="/static/img/Group 25.svg" alt="">
                         <input id="query" type="text" class="form-control" placeholder="Введите цитату, автора, категорию...">
                         <button id="search" type="button" form="searchForm" class="btn btn-positive">Найти</button>
                     </div>
@@ -90,51 +91,18 @@
                 
             
             
-            <div class="quotes">
-                <div class="block-quote">
-                    <div class="quote-dic">
-                        <div class="quote-cat">
-                            <h2 class="quote">Цитата...</h2>
-                            <p class="author">Автор/источник</p>
-                        </div>
-                        <div class="horizontal-block1">
-                            <span class="categor">
-                                Категория
-                            </span>
-                            <div class="categor">
-                                тегория
-                            </div>
-                            <div class="categor">
-                                Категоaaрия
-                            </div>
-                            <div class="categor">
-                                Категоaaaрия
-                            </div>
-                            <div class="categor">
-                                Категория
-                            </div>
-                            <div class="categor">
-                                Категорaaaaaaaaaaия
-                            </div>
-                            <div class="categor">
-                                Категория
-                            </div>
-                            <div class="categor">
-                                Категория
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line none"></div>
-                </div>
+            <div class="quotes" id="quotes">
+                
             </div>           
         </div>
     </main>
 
-    <script src="./static/js/main.js"></script>
-    <script src="../static/js/apiRequests.js"></script>
-    <script src="../static/js/loadFilters.js"></script>
-    <script src="../static/js/loadDictionary.js"></script>
-    <script src="../static/js/eventListeners.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/utils.js"></script>
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/loadFilters.js"></script>
+    <script src="/static/js/loadDictionary.js"></script>
+    
 
     <script>
         searchHandler();

@@ -1,13 +1,14 @@
-from .models import Quote, Category, QuoteCategory
+from .models import Quote, Category, QuoteCategory, CustomUser
 from django.db import connection
 from ast import literal_eval
 
 
+
 def addQuote(quote: dict, isCustom=False):
-    if not isCustom:
-        quoteItem = Quote(quote=quote['quote'], quote_author=quote['quoteAuthor'], suggester_author=quote['suggesterAuthor'], status=1) # quote adding
+    if isCustom:
+        quoteItem = Quote(quote=quote['quote'], quote_author=quote['quoteAuthor'], suggester_author=quote['suggesterAuthor'], status=2)
     else:
-        quoteItem = Quote(quote=quote['quote'], quote_author=quote['quoteAuthor'], status=2)
+        quoteItem = Quote(quote=quote['quote'], quote_author=quote['quoteAuthor'], status=1) # quote adding
     quoteItem.save()
     
     for category in quote['categories']:
@@ -26,10 +27,11 @@ def addQuotes(quotes: list):
         addQuote(quote)
 
 
-def getQuotes(author=None, category=None, query=None) -> list:
+def getQuotes(author=None, category=None, query=None, suggesterAuthor=None, isPub=True) -> list:
     quotes = Quote.objects
     
-    quotes = quotes.filter(status=1) # only publicated
+    if isPub:
+        quotes = quotes.filter(status=1) # only publicated
 
     if author:
         quotes = quotes.filter(quote_author=author)
@@ -39,6 +41,9 @@ def getQuotes(author=None, category=None, query=None) -> list:
         category_id = Category.objects.get(category=category).id
         quote_ids = list(QuoteCategory.objects.filter(category=category_id).values_list('quote', flat=True))
         quotes = quotes.filter(id__in=quote_ids)
+    if suggesterAuthor:
+        suggesterAuthorId = int(CustomUser.objects.get(username=suggesterAuthor).id)
+        quotes = quotes.filter(suggester_author=suggesterAuthorId)
 
     quotes = list(quotes.values())
     

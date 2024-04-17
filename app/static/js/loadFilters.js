@@ -63,6 +63,8 @@ getAuthors('').then((response1) => { // Загрузка данных в мод�
         let authors = response1.data;
         let categories = response2.data;
 
+        console.log(authors, categories);
+
         loadModalAuthors(authors);
         loadModalCategories(categories);
     })

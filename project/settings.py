@@ -173,15 +173,6 @@ if not DEBUG:
             'PORT': environ.get('MYSQL_PORT'),        # Порт MySQL
         }
     }
-
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = environ.get('EMAIL_HOST')  # Ваш SMTP-сервер
-    EMAIL_PORT = int(environ.get('EMAIL_PORT'))  # Порт SMTP-сервера (обычно 587 для TLS или 465 для SSL)
-    EMAIL_USE_TLS = True  # Использовать TLS (или False для SSL)
-    EMAIL_USE_SSL = False  # Использовать SSL (если EMAIL_USE_TLS установлено в False)
-    EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER')  # Ваш логин от почтового ящика
-    EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')  # Ваш пароль от почтового ящика
-    EMAIL_NAME = environ.get('EMAIL_NAME')
 else:
     DATABASES = {
         'default': {
